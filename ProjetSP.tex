@@ -1,0 +1,231 @@
+\documentclass[12pt]{article}
+%\usepackage{natbib}
+\usepackage[french]{babel}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{xcolor}
+\usepackage{bbm}
+\usepackage{amsmath,amsthm,amssymb,latexsym,amsfonts}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+\usepackage{systeme}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{pifont}
+%\usepackage[cache=false]{minted}
+%\definecolor{LightGray}{gray}{0.95}
+\usepackage{autobreak}
+
+\title{Théorème fondamental des polynômes symétriques}
+\author{PIARD A. - JACQUET R. - CARVAILLO T.}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\lhead{\thetitle}
+\cfoot{\thepage}
+\def\dotfill#1{\cleaders\hbox to #1{.}\hfill}
+\newcommand\dotline[2][.5em]{\leavevmode\hbox to #2{\dotfill{#1}\hfil}}
+
+%définition commande présentation fonction
+\newcommand{\fonction}[5]{
+\begin{displaymath}
+\begin{array}{l|rcl}
+\displaystyle
+#1 : & #2 & \longrightarrow & #3 \\
+    & #4 & \longmapsto & #5
+\end{array}
+\end{displaymath}
+}
+%fin définition
+\theoremstyle{remark}\newtheorem{note}{Note}
+\theoremstyle{remark}\newtheorem{nota}{Notation}
+
+\newcommand{\M}{\mathbbm{M}}
+\newcommand{\N}{\mathbbm{N}}
+\newcommand{\Z}{\mathbbm{Z}}
+\newcommand{\Q}{\mathbbm{Q}}
+\newcommand{\R}{\mathbbm{R}}
+\newcommand{\C}{\mathbbm{C}}
+\newcommand{\G}{\mathbbm{G}}
+\newcommand{\K}{\mathbbm{K}}
+\newcommand{\F}{\mathbbm{F}}
+\newcommand{\Fq}{\mathbbm{F}_q}
+\newcommand{\Fqn}{\mathbbm{F}_{q^n}}
+\newcommand{\Fp}{\mathbbm{F}_p}
+
+%fin définition
+
+
+% de jolies accolades
+\newcommand{\accolade}[2]{
+\begin{displaymath}
+%#1 = \left\{
+    \begin{array}{ll}
+       #1 %& \mbox{si }
+       #2 %& \mbox{sinon.}
+    \end{array}
+\right.
+\end{displaymath}
+}
+% de jolies accolades
+
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollaire}{Corollaire}
+\newtheorem{lemma}{Lemme}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}
+\newtheorem{example}{Exemple}
+\newtheorem*{examples}{Exemples}
+\newtheorem{exo}{Exercice}	
+\newtheorem{coro}{Corollaire}	
+\newtheorem{rem}{Remarque}
+\newtheorem{crit}{Critère}
+\newtheorem{bg}{A l'attention des bg, question}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+    \textsc{\LARGE Projet de Systèmes Polynomiaux.\\
+    \vspace{12pt}
+2020-2021}\\[1.0 cm]
+    \dotline[15pt]{15cm}\\
+	\includegraphics[scale = 2.2]{logo.png}
+	\dotline[15pt]{15cm}\\
+	\vspace{1.5cm}
+	\textsc{\Large Faculté des Sciences et Techniques}\\
+	\textsc{\large Master 1 - Maths. CRYPTIS}\\[1.0 cm]
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \color{blue} \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{A l'attention de :}\\
+			M. LICKTEIG\\
+			\phantom{a}\\
+			\phantom{a}\\
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+    	\begin{flushright} \large
+		\emph{Rédigé par :}\\
+		PIARD A.\\
+		JACQUET R.\\
+		CARVAILLO T.\\
+		\end{flushright}
+	\end{minipage}\\[2 cm]
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagebreak
+
+
+\section{Rappels sur les Corps Finis} %et polynômes en plusieurs variables ?
+
+
+
+
+
+
+% Rappels sur les corps finis
+
+
+
+
+%Parler de LT, LM, ..., multideg ?
+
+
+
+
+Dans la suite de ce rapport, $K$ désignera un %corps ?^
+\pagebreak
+
+\section{Les polynômes symétriques}
+
+\subsection{Introduction aux polynômes symétriques}
+Les polynômes symétriques prennent forme à partir de l'étude des racines de n'importe quel polynôme. Considérons le polynôme $P=X^3 + bX^2 + cX + d$. C'est un polynôme cubique donc il a $3$ racines, non nécessairement distinctes. On notera ces racines $\alpha_1 , \alpha_2$ et $\alpha_3$.
+Le polynôme $P$ peut alors se factoriser ainsi :
+$$X^3 + bX^2 + cX + d = (X - \alpha_1)(X - \alpha_2)(X - \alpha_3),$$
+ce qui nous donne :
+\begin{eqnarray}
+X^3 + bX^2 + cX + d &=& (X - \alpha_1)(X - \alpha_2)(X - \alpha_3) \nonumber \\
+X^3 + bX^2 + cX + d &=& X^3 - X^2(\alpha_3 + \alpha_2 + \alpha_1) + X(\alpha_2 \alpha_3 + \alpha_1 \alpha_3 + \alpha_1 \alpha_2) - \alpha_1 \alpha_2 \alpha_3 \nonumber
+\end{eqnarray}
+Par identification, on obtient 
+\begin{eqnarray}
+b &=& -(\alpha_3 + \alpha_2 + \alpha_1) \nonumber \\
+c &=& \alpha_2 \alpha_3 + \alpha_1 \alpha_3 + \alpha_1 \alpha_2 \nonumber \\
+d &=& - \alpha_1 \alpha_2 \alpha_3. \nonumber 
+\end{eqnarray}
+On observe donc que les coefficients de $P$ sont polynomiaux en ses racines. Par ailleurs, comme modifier l'ordre des termes de $P$ ne le change pas, il s'ensuit que les polynômes définissant $b,c$ et $d$ par rapport à $\alpha_1$, $\alpha_2$ et $\alpha_3$ restent les mêmes si on permute $\alpha_1$, $\alpha_2$ et $\alpha_3$.\\
+Les polynômes respectant ce fait sont dits \textit{polynômes symétriques}. Cela nous amène à la définition générale suivante.\\
+
+%Peut-être réintroduire Sn l'ensemble des permutations à n éléments pour reprendre la definition de la première page de la ref 2
+
+\begin{definition}
+Un polynôme $P \in K\left[ X_1, X_2, \ldots , X_n \right] $ est dit symétrique si $$P(X_{i_1}, X_{i_2}, \ldots , X_{i_n}) = P(X_1,X_2,\ldots ,X_n),$$ pour toute permutation $X_{i_1}, X_{i_2}, \ldots , X_{i_n}$ de $X_1,X_2, \ldots ,X_n$.
+\end{definition}
+\vspace{12pt}
+\begin{examples}
+\begin{enumerate}
+	\item Soit $P = X^{n_1} + Y^{n_2} + Z^{n_3}\in K\left[ X,Y,Z\right]$, avec $n_1,n_2,n_3 \in \mathbbm{N}$. Alors $P$ est un polynôme symétrique. En effet, 
+		\begin{eqnarray}
+P &=& X^{n_1} + Z^{n_3} + Y^{n_2} \nonumber \\
+P &=& Y^{n_2} + X^{n_1} + Z^{n_3} \nonumber \\
+P &=& Y^{n_2} + Z^{n_3} + X^{n_1} \nonumber \\
+P &=& ... \nonumber
+		\end{eqnarray}
+		
+	\item Soit $P = XYZ \in K\left[ X,Y,Z\right]$. Ce polynôme est symétrique car $P = XYZ = YZX = ZYX = \ldots$.
+\end{enumerate}
+
+\end{examples}
+
+\subsection{Le théorème fondamental des polynômes symétriques}
+En considérant tous les rappels faits à précédemment, nous pouvons introduire le fameux théorème fondamental des polynômes symétriques.
+
+\begin{theorem}
+Tout polynôme symétrique de $K\left[ X_1, X_2, ... , X_n \right]$ peut s'écrire de façon unique comme une expression polynomiale en les polynômes symétriques élémentaires $\sigma_1, \sigma_2,..., \sigma_n$.
+\end{theorem}
+
+
+
+
+
+
+
+\pagebreak
+\addcontentsline{toc}{part}{Références}
+
+\begin{thebibliography}{9}
+	\bibitem{these1}
+	COX David, LITTLE John, O'SHEA Donal\\
+	Ideal, Varieties, and Algorithms - An Introduction To Computational Algebraic Geometry and Commutative Algebra,\\
+	Third Edition,
+	7.1, p.317- ?
+
+	\bibitem{internet}
+	\url{https://math.unice.fr/~walter/L3_Alg_Arith/cours2.pdf}
+	
+\end{thebibliography}
+\end{document}
