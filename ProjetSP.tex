@@ -15,7 +15,6 @@
 \usepackage{stmaryrd}
 \usepackage{systeme}
 \usepackage{enumitem}
-\usepackage{xcolor}
 \usepackage{pifont}
 %\usepackage[cache=false]{minted}
 %\definecolor{LightGray}{gray}{0.95}
@@ -314,7 +313,36 @@ Tout polynôme symétrique de $K\left[ X_1, X_2, ... , X_n \right]$ peut s'écri
 
 
 \begin{proof}
-CLO 331
+Nous allons utiliser l'ordre lexicographique avec $x_1 > x_2 > \ldots > x_n$. Soit $f \in K[x_1, \ldots , x_n]$ un polynôme symétrique non nul, et $LT(f)=ax^{\alpha}$, où $\alpha=(\alpha_1 , \alpha_2, \ldots , \alpha_n )$ et $a \in K$. On peut déjà supposer que les $\alpha_i$, $i\in \lbrace 1, \ldots , n \rbrace $ sont ordonnés comme tel : $\alpha_1 \geq \alpha_2 \geq \ldots \geq \alpha_n$.
+En effet, supposons qu'on ait $\alpha_i < \alpha_{i+1}$ pour un certain $i$. Il suffit alors de considérer le vecteur d'exposants $\beta$, obtenu à partir de $\alpha$ en permutant $\alpha_i$ et $\alpha_{i+1}$. On écrit $\beta = (\alpha_1 ,\ldots , \alpha_{i+1}, \alpha_i , \ldots , \alpha_n)$. Comme $ax^{\alpha}$ est un terme de $f$, on en déduit que $ax^{\beta}$ est un terme de $f(x_1 , \ldots , x_{i+1}, x_{i}, \ldots , x_n)$. Or, $f$ est symétrique donc $f(x_1 , \ldots , x_{i+1}, x_{i}, \ldots , x_n)=f$, et par conséquent, $ax^{\beta}$ est un terme de $f$. Ceci est impossible en considérant que $\beta > \alpha$ selon l'ordre lexicographique.\\
+Posons maintenant $h=\sigma_1^{\alpha_1 - \alpha_2} \sigma_2^{\alpha_2 - \alpha_3} \ldots \sigma_{n-1}^{\alpha_{n-1}-\alpha_n} \sigma_n^{\alpha_n}$.\\
+Pour trouver le Leading Term de h, on a besoin de $LT(\sigma_r)=x_1x_2 \ldots x_r$, $r \in \lbrace 1, \ldots , r \rbrace$. On en déduit que 
+\begin{eqnarray}
+LT(h) &=& LT( \sigma_1^{\alpha_1 - \alpha_2} \sigma_2^{\alpha_2 - \alpha_3} \ldots \sigma_{n-1}^{\alpha_{n-1}-\alpha_n} \sigma_n^{\alpha_n} \nonumber \\
+&=& LT(\sigma_1)^{\alpha_1 - \alpha_2}LT(\sigma_2)^{\alpha_2 - \alpha_3} \ldots LT(\sigma_n)^{\alpha_n} \nonumber \\
+&=& x_1^{\alpha_1 - \alpha_2}(x_1x_2)^{\alpha_2 - \alpha_3} \ldots (x_1x_2 \ldots x_n)^{\alpha_n} \nonumber \\ 
+&=& x_1^{\alpha_1}x_2^{\alpha_2} \ldots x_n^{\alpha_n} = x^\alpha . \nonumber
+\end{eqnarray}
+Il s'ensuit que $f$ et $ah$ ont le même Leading Term, et par conséquent,
+\begin{center}
+multideg($f-ah$) $<$ multideg($f$),
+\end{center}
+lorsque $f-ah \neq 0$.\\ \vspace{12pt}Posons maintenant $f_1 = f - ah$, en remarquant que $f_1$ est symétrique car $f$ et $ah$ le sont. Donc, si $f_1 \neq 0$, on peut répéter l'étape précédente pour construire $f_2 = f_1 - a_1h_1$, où $a_1$ est une constante et $h_1 = \displaystyle \prod_{i=1}^{n} \sigma_i^{\gamma_i}$, $\gamma_i \in \mathbbm{N}$. On sait aussi que $LT(f_2)<LT(f_1)$ quand $f_2 \neq 0$. En continuant ainsi on obtient une suite de polynômes $f, f_1, f_2, \ldots$ avec
+\begin{center}
+multideg($f$ )$>$ multideg($f_1$) $>$ multideg($f_2$) $\ldots$ .
+\end{center}
+Comme l'ordre lexicographique a un bon ordre, la suite est finie. Mais le processus se termien seulement lorsque $f_{t+1}=0$ pour un certain $t$. On voit alors assez naturellement que 
+$$f = ah + a_1h_1 + \ldots + a_th_t\,$$
+ce qui montre que $f$ est polynomiale en les polynômes symétriques élémentaires.
+\\
+Il nous reste à montrer l'unicité.\\
+Supposons qu'on a un polynôme symétrique $f$ pouvant s'écrire
+$$f=g_1(\sigma_1, \ldots , \sigma_n) = g_2(\sigma_1, \ldots , \sigma_n).$$
+Notons $y_1, \ldots , y_n$ les $n$ variables des polynômes à $n$ indéterminées $g_1$ et $g_2$. On doit montrer que $g_1 = g_2$ dans $K \left[  y_1, \ldots , y_n \right] $.\\
+Si on pose $g = g_1 - g_2$, alors $g(\sigma_1 , \ldots , \sigma_n) = 0$ dans $K \left[ x_1, \ldots , x_n \right] $. Montrer que $g=0$ dans $K \left[ x_1, \ldots , x_n \right]$ revient à montrer l'unicité.\\
+Supposons que $g \neq 0$. Si on écrit $g = \displaystyle \sum_{\beta} a_{\beta}y^{\beta}$, alors $g(\sigma_1, \ldots , \sigma_n)$ est la somme des polynômes $g_\beta = a_\beta \sigma_1^{\beta_1} \sigma_2^{\beta_2} \ldots \sigma_n^{\beta^n}$, où $\beta = (\beta_1 , \ldots , \beta_n)$. De plus, par le calcul de $LT(h)$, on déduit que $$LT(g_\beta) = a_\beta x_1^{\beta_1 + \ldots + \beta_n} x_2^{\beta_2 + \ldots + \beta_n} \ldots x_n^{\beta_n}.$$
+{\color{red}{Montrer que $(\beta_1 , \ldots , \beta_n) \mapsto (\beta_1 + \ldots + \beta_n , \beta_2 + \ldots + \beta_n , \ldots , \beta_n)$ est injective}}\\
+Donc $(\beta_1 , \ldots , \beta_n) \mapsto (\beta_1 + \ldots + \beta_n , \beta_2 + \ldots + \beta_n , \ldots , \beta_n)$ est injective. Par conséquent, les $g_\beta$ ont des \textbf{\textsl{Leading Term}} distincts. En particulier, en choisissant $\beta$ tel que $LT(g_\beta)>LT(g_\gamma)\, \forall \gamma \neq \beta$, alors $LT(g_\beta)$ sera plus grand que tous les termes des $g_\gamma$. Donc il n'y a rien pour annuler $LT(g_\beta)$, et par conséquent, $g(\sigma_1 , \ldots , \sigma_n)$ ne peut pas être nul. D'où l'unicité.
 \end{proof}
 
 
