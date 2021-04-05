@@ -65,6 +65,7 @@
 \newcommand{\Fq}{\mathbbm{F}_q}
 \newcommand{\Fqn}{\mathbbm{F}_{q^n}}
 \newcommand{\Fp}{\mathbbm{F}_p}
+\newcommand{\ord}{\preccurlyeq}
 
 %fin définition
 
@@ -107,7 +108,7 @@
     \vspace{12pt}
 2020-2021}\\[1.0 cm]
     \dotline[15pt]{15cm}\\
-	\includegraphics[scale = 2.2]{logo.png}
+	%\includegraphics[scale = 2.2]{logo.png}
 	\dotline[15pt]{15cm}\\
 	\vspace{1.5cm}
 	\textsc{\Large Faculté des Sciences et Techniques}\\
@@ -253,11 +254,78 @@ Puisque $n$ est positif alors $\mathcal{P} (n,p) > 0$.
 
 \subsection{Polynômes multivariés}
 
+
 %Parler de LT, LM, ..., multideg ? ordre lexicographique
 
+Dans ce qui suit, $\K$ désignera un corps quelconque.
 
+\begin{definition}[Ordre]
+Soit $E$ un ensemble quelconque, on appelle \textit{ordre partiel} sur $E$ toute relation vérifiant les propriétés suivantes pour $(x,y) \in E^2$:
+	 \begin{enumerate}
+	 	\item $x\ord x$ (réflexivité)
+	 	\item $x\ord y$ et $y\ord x \Rightarrow x=y$ (antisymétrie)
+	 	\item $x\ord y$ et $y\ord z \Rightarrow x\ord z$ (transitivité)
+	 \end{enumerate}
+En d'autres terme, $\ord$ est une relation d'équivalence sur $E$.
+\end{definition}
 
+\begin{definition}[Ordre total, ordonné]
+Sous les mêmes notations, on dit que $\ord$ est un \textit{ordre total} si deux éléments quelconques sont toujours comparable, i.e. si
+	\begin{center}$\forall (x,y)\in E^2, x\ord y\text{ ou } y\ord x$\end{center}
+De plus, $\ord$ est dit \textit{bien ordoné} si
+	\begin{center}$  \forall\text{ } F \subseteq E, \exists \text{ } f_{min}\in F \text{ tel que } \forall f\in F, \text{ } f_{min}\ord f $\end{center}
+\end{definition}
 
+\begin{definition}[Monoïde]
+On appelle monoïde tout ensemble muni d'une loi de composition interne et d'un élément neutre.
+\end{definition}
+
+\begin{definition}
+Soient $n\in\N$ et $\{X_1, ..., X_n\}$ un ensemble fini d'indéterminées. On définit le monoïde $\M_n$ comme suit:
+	\begin{center} $\M_n := \{ X^{\alpha} := X_1^{\alpha_1}\ldots X_n^{\alpha_n}\}$ \end{center}
+\end{definition}
+
+\begin{prop}
+\fonction{\phi}{\M_n}{\N^n}{ X^{\alpha} := X_1^{\alpha_1}\ldots X_n^{\alpha_n}}{\alpha:=(\alpha_1,\ldots, \alpha_n)}
+est un isomorphisme de monoïde.
+\end{prop}
+
+\begin{definition}[Ordre monomial]
+On dit que $\ord$ est un ordre monomial sur $\M_n$ si 
+	\begin{enumerate}
+		\item $\ord$ est un ordre total
+		\item $\ord$ est compatible avec la multiplication, i.e. si pour tout
+		\begin{center} $X=X_1\ldots X_n  \text{ , } \alpha=(\alpha_1,\ldots, \alpha_n) \text{ , } \beta=(\beta_1,\ldots, \beta_n) \text{ et } \gamma=(\gamma_1,\ldots, \gamma_n)$\end{center}
+on a 
+		\begin{center}$X^{\alpha} \ord X^{\beta }\Rightarrow X^{\alpha}.X^{\gamma} \ord X^{\beta}.X^{\gamma}$\end{center}
+		\item $\M_n$ est bien ordonné par $\ord$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Ordre lexicographique]
+Pour deux vecteurs exposant $\alpha=(\alpha_1,\ldots, \alpha_n) \text{ et } \beta=(\beta_1,\ldots, \beta_n) \in\N^n$, on peut spécifier ordre, appellé \textit{ordre lexicographique} définit comme suit:
+	\begin{center} $\alpha\ord_{lex} \beta $\end{center}
+	\begin{center} si \end{center}
+	\begin{center} $\exists \text{ } m\in\llbracket 1,n \rrbracket \text{ tel que } \forall \text{ } i<m \text{ , } \alpha_i-\beta_i=0  \text{ et } \alpha_m < \beta_m$ \end{center}
+\end{definition}
+
+Nous allons dès à présent travailler dans $\K[X_1, \ldots, X_n]$, et $\ord$ désignera toujours un ordre monomial sur $\M_n\subseteq \K[X_1, \ldots, X_n]$.
+
+\begin{definition}[Leading Term]
+On appelle \textit{terme} tout éléments de $\M_n$ multiplié par un élément non nul $c$ du corps de base. \newline
+On appelle \textit{Leading Term}(LT) de $P\in \K[X_1, \ldots, X_n]$, son monôme de plus haut dégre par rapport à l'ordre $\ord$. \newline
+La constante $c$ sera appellée \textit{Leading Coefficient}(LC), et $X_1^{\alpha_1}\ldots X_n^{\alpha_n}$ le \textit{Leading Monomial}, de sorte que :
+\begin{center} $P = \underbrace{\underbrace{c}_\textrm{LC(P)}.\underbrace{X_1^{\alpha_1}\ldots X_n^{\alpha_n}}_\textrm{LM(P)}}_\textrm{LT(P)}$  + Q \end{center}
+où $Q\in \K[X_1, \ldots, X_n]$ est constitué des termes de la forme $X^\beta \text{ , } \beta \ord_{lex} \alpha \text{ et } X \in\K[X_1, \ldots, X_n]$.
+\end{definition}
+
+\begin{definition}[Multi degré]
+Le vecteur d'exposant $\alpha := (\alpha_1,\ldots, \alpha_n)$ est appellé le multi degré de $P$ et est noté $mdeg(P)$.
+\end{definition}
+
+\begin{prop}
+Soient $P,Q \in\K[X_1, \ldots, X_n]$, on a $mdeg(P.Q) = mdeg(P) + mdeg(Q)$.
+\end{prop}
 
 \pagebreak
 
