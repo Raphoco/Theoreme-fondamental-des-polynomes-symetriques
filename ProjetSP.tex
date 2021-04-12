@@ -20,6 +20,7 @@
 %\definecolor{LightGray}{gray}{0.95}
 \usepackage{autobreak}
 \usepackage{hyperref}
+\usepackage{tikz}
 
 \title{Théorème fondamental des polynômes symétriques}
 \author{PIARD A. - JACQUET R. - CARVAILLO T.}
@@ -98,6 +99,35 @@
 \newtheorem{crit}{Critère}
 \newtheorem{bg}{A l'attention des bg, question}
 
+\newtheorem{thm}{Theorem}
+\newcommand{\statetheoremhoriz}[2][\textwidth]{
+ \par\noindent\tikzstyle{mybox} = [draw=black,left color=gray!30,
+  right color=gray!7,thick,rectangle,inner sep=6pt]
+ \begin{tikzpicture}
+  \node [mybox] (box){%
+   \begin{minipage}{#1}{#2}\end{minipage}
+  };
+ \end{tikzpicture}
+}
+\newcommand{\statetheoremvert}[2][\textwidth]{
+ \par\noindent\tikzstyle{mybox} = [draw=blue,top color=cyan!50,
+  bottom color=cyan!5,thick,rectangle,inner sep=6pt]
+ \begin{tikzpicture}
+  \node [mybox] (box){%
+   \begin{minipage}{#1}{#2}\end{minipage}
+  };
+ \end{tikzpicture}
+}
+\newcommand{\statetheoremsolid}[2][\textwidth]{
+ \par\noindent\tikzstyle{mybox} = [draw=blue,fill=cyan!50,
+  thick,rectangle,inner sep=6pt]
+ \begin{tikzpicture}
+  \node [mybox] (box){%
+   \begin{minipage}{#1}{#2}\end{minipage}
+  };
+ \end{tikzpicture}
+}
+
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -140,7 +170,6 @@
 \tableofcontents
 \pagebreak
 
-
 \section{Rappels sur les Corps Finis} 
 Soit $\K$ un corps quelconque et soit $\varphi$ le morphisme suivant :
 \begin{center}
@@ -152,6 +181,7 @@ $
 $
 \end{center}
 \vspace{12pt}
+\statetheoremhoriz{
 \begin{definition}
 Soit $\K$ un corps quelconque. Toute partie $\mathcal{P}$ de $\K$ vérifiant :
 \begin{itemize}
@@ -160,43 +190,47 @@ Soit $\K$ un corps quelconque. Toute partie $\mathcal{P}$ de $\K$ vérifiant :
 \item $\mathcal{P}$ est un sous-groupe de $(\K, +)$ et $\mathcal{P}^{*}$ muni de la loi $\times$ est un sous-groupe multiplicatif $(\K^{*}, \times)$.
 \end{itemize}
 est appelée sous-corps de $\K$.
-\end{definition}
+\end{definition}}
 \vspace{12pt}
+\statetheoremhoriz{
 \begin{definition}
 Soit $\K$ un corps quelconque.
 \begin{itemize}
 \item $\K$ est dit premier s'il ne contient aucun sous-corps strict.
 \item Si $\K$ est un corps, le sous-corps de $\K$ engendré par $1_{\mathbbm{K}}$ est un corps premier, c'est le sous-corps premier de $\K$.
 \end{itemize}
-\end{definition}
-\vspace{12pt}
+\end{definition}}
+
 Le noyau du morphisme $\varphi$ est un idéal de $\Z$ et donc de la forme $k\Z$ pour $k \in \Z$. Par le premier théorème d'isomorphisme on a Im$(\varphi) \cong \Z / n \Z$. Par intégrité de $\Z / n \Z$, $n=0$ ou $n$ est un nombre premier. Si $n=0$ alors $\varphi$ est injective et donc le sous-corps premier de $\K$ est isomorphe à $\Q$. Si $n \neq 0$ alors le sous-corps premier est isomorphe à $\Z / n \Z$ et $n$ s'appelle la \textbf{caractéristique} de $\K$. 
 %On désignera dorénavant par $\K$ un corps fini de caractéristique $p$ avec $p$ un nombre premier.
 \\
-
+\statetheoremhoriz{
 \begin{definition}
 Soient $L$ et $\K$ deux corps. Si $L/K$ est une extension de corps alors $L$ est un espace vectoriel sur $K$, où l'addition vectorielle est l'addition dans $L$ et la multiplication par un scalaire $K \times L$ est la restriction à $K \times L$ de la multiplication dans $L$. La dimension du $K$-espace vectoriel $L$ est appelée le degré de l'extension et est notée $[L:K]$.
-\end{definition}
+\end{definition}}
 \vspace{12pt}
+\statetheoremhoriz{
 \begin{definition}
 Soit $P$ un polynôme sur un corps $K$. On appelle corps de décomposition de $P$ sur $K$ une extension $L$ de $K$ telle que :
 \begin{itemize}
 \item dans $L[X]$, $P(X)$ est produit de facteurs de degré $1$,
 \item les racines de $P(X)$ engendrent $L$.
 \end{itemize}
-\end{definition}
+\end{definition}}
 \vspace{12pt}
+\statetheoremhoriz{
 \begin{prop}
 Soit $P$ un polynôme sur un corps $K$. Alors $P$ admet un corps de décomposition, unique à $K$-isomorphisme près.
-\end{prop}
+\end{prop}}
 \vspace{30pt}
+\statetheoremhoriz{
 \begin{prop}\hspace{12pt}
 \begin{itemize}
 \item Le cardinal de $\K$ est une puissance de $p$.
 \item Réciproquement, pour tout $n \in \N^{*}$, il existe un corps $\K$ de cardinal $p^n$. En outre $\K$ est unique à isomorphisme près.
 %On appelle corps de décomposition de P, la plus petite extension de K contenant toutes les racines de P (item 1)
 \end{itemize}
-\end{prop}
+\end{prop}}
 %\vspace{12pt}
 \begin{proof}\hspace{12pt}
 \begin{itemize}
@@ -209,7 +243,7 @@ On notera dorénavant $\F_q$ \textbf{le} corps fini à $q = p^n$ éléments.
 \subsection{Construction}
 Soit $P \in \F_p [X]$ un polynôme irréductible sur $\F_p$. On note $n = $ deg$(P)$. Puisque $P$ est irréductible, l'idéal $(P)$ est donc maximal%est-ce qu'on le montre ?
 . Le quotient $\F_p [X] / (P)$ est le corps de rupture de $P$ sur $\F_p$ de cardinal $p^n$. Afin de montrer que l'on peut toujours construire les corps finis nous allons montrer que pour tout $n \in \N^{*}$ il existe un polynôme irréductible sur $\F_p$ de degré $n$.
-
+\statetheoremhoriz{
 \begin{prop}
 Soit $n \in \N^{*}$, on définit $\mathcal{P} (n,p)$ par
 \begin{center}
@@ -219,16 +253,18 @@ Alors pour tout $n \in \N^{*}$ on a,
 \begin{center}
 $\displaystyle X^{p^n} - X = \prod_{d | n} \prod_{P \in \mathcal{P}(n,p)} P.$
 \end{center}
-\end{prop}
+\end{prop}}
 \begin{proof}
 \begin{itemize}
 \item Soit $P$ un facteur irréductible de $X^{p^n} - X$ sur $\F_p$ de degré $d$. Le corps de rupture de $P$ sur $\F_p$ est de cardinal $p^d$ du corps de décomposition $X^{p^n} - X$ sur $\F_p$, c'est-à-dire $F_{p^n}$, donc $d$ divise $n$.
 \item Réciproquement, on suppose que $d$ divise $n$ et soit $P \in \mathcal{P} (n,p)$. Soit $\alpha$ une racine de $P$ dans le corps de rupture de $P$ sur $\F_p$. Alors on a $\F_p (\alpha) \simeq \F_{p^d}$. D'où $\alpha$ est racine de $X^{p^n} - X$. Or, puisque $P$ est irréductible, alors $P$ est le polynôme minimal de $\alpha$ sur $\F_p$ donc $P$ divise $X^{p^n} - X$. En outre les facteurs irréductible de $X^{p^n} - X$ sur $\F_p$ sont simples puisque $P$ est le polynôme minimal de $\alpha$ et que $P$ divise $X^{p^n} - X$.
 \end{itemize}
 \end{proof}
+\statetheoremhoriz{
 \begin{coro}
 Soit $n \in \N^{*}$, il existe un polynôme irréductible de degré $n$ sur $\F_p$.
 \end{coro}
+}
 \begin{proof}
 En conservant les notations de la proposition précédente, il s'agit de montrer que $\# \mathcal{P} (n,p) > 0$. Pour ce faire on évalue le degré de l'égalité
 \begin{center}
@@ -257,7 +293,7 @@ Puisque $n$ est positif alors $\mathcal{P} (n,p) > 0$.
 
 %Parler de LT, LM, ..., multideg ? ordre lexicographique
 
-
+\statetheoremhoriz{
 \begin{definition}[Ordre]
 Soit $E$ un ensemble quelconque, on appelle \textit{ordre partiel} sur $E$ toute relation vérifiant les propriétés suivantes pour $(x,y) \in E^2$:
 	 \begin{enumerate}
@@ -266,29 +302,29 @@ Soit $E$ un ensemble quelconque, on appelle \textit{ordre partiel} sur $E$ toute
 	 	\item $x\ord y$ et $y\ord z \Rightarrow x\ord z$ (transitivité)
 	 \end{enumerate}
 En d'autres terme, $\ord$ est une relation d'équivalence sur $E$.
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{definition}[Ordre total, ordonné]
 Sous les mêmes notations, on dit que $\ord$ est un \textit{ordre total} si deux éléments quelconques sont toujours comparable, i.e. si
 	\begin{center}$\forall (x,y)\in E^2, x\ord y\text{ ou } y\ord x$\end{center}
 De plus, $\ord$ est dit \textit{bien ordonné} si
 	\begin{center}$  \forall\text{ } F \subseteq E, \exists \text{ } f_{min}\in F \text{ tel que } \forall f\in F, \text{ } f_{min}\ord f $\end{center}
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{definition}[Monoïde]
 On appelle monoïde tout ensemble muni d'une loi de composition interne et d'un élément neutre.
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{definition}
 Soient $n\in\N$ et $\{X_1, ..., X_n\}$ un ensemble fini d'indéterminées. On définit le monoïde $\M_n$ comme suit:
 	\begin{center} $\M_n := \{ X^{\alpha} := X_1^{\alpha_1}\ldots X_n^{\alpha_n}\}$ \end{center}
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{prop}
 \fonction{\phi}{\M_n}{\N^n}{ X^{\alpha} := X_1^{\alpha_1}\ldots X_n^{\alpha_n}}{\alpha:=(\alpha_1,\ldots, \alpha_n)}
 est un isomorphisme de monoïde.
-\end{prop}
-
+\end{prop}}
+\statetheoremhoriz{
 \begin{definition}[Ordre monomial]
 On dit que $\ord$ est un ordre monomial sur $\M_n$ si 
 	\begin{enumerate}
@@ -299,32 +335,32 @@ on a
 		\begin{center}$X^{\alpha} \ord X^{\beta }\Rightarrow X^{\alpha}.X^{\gamma} \ord X^{\beta}.X^{\gamma}$\end{center}
 		\item $\M_n$ est bien ordonné par $\ord$
 	\end{enumerate}
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{definition}[Ordre lexicographique]
 Pour deux vecteurs exposant $\alpha=(\alpha_1,\ldots, \alpha_n) \text{ et } \beta=(\beta_1,\ldots, \beta_n) \in\N^n$, on peut spécifier ordre, appellé \textit{ordre lexicographique} définit comme suit:
 	\begin{center} $\alpha\ord_{lex} \beta $\end{center}
 	\begin{center} si \end{center}
 	\begin{center} $\exists \text{ } m\in\llbracket 1,n \rrbracket \text{ tel que } \forall \text{ } i<m \text{ , } \alpha_i-\beta_i=0  \text{ et } \alpha_m < \beta_m$ \end{center}
-\end{definition}
+\end{definition}}
 
 Nous allons dès à présent travailler dans $\K[X_1, \ldots, X_n]$, et $\ord$ désignera toujours un ordre monomial sur $\M_n\subseteq \K[X_1, \ldots, X_n]$.
-
-\begin{definition}[Leading Term]
+\statetheoremhoriz{
+\begin{definition}[\textsc{Leading Term}]
 On appelle \textit{terme} tout éléments de $\M_n$ multiplié par un élément non nul $c$ du corps de base. \newline
-On appelle \textit{Leading Term}(LT) de $P\in \K[X_1, \ldots, X_n]$, son monôme de plus haut degré par rapport à l'ordre $\ord$. \newline
+On appelle \textsc{Leading Term}(LT) de $P\in \K[X_1, \ldots, X_n]$, son monôme de plus haut degré par rapport à l'ordre $\ord$. \newline
 La constante $c$ sera appelée \textit{Leading Coefficient}(LC), et $X_1^{\alpha_1}\ldots X_n^{\alpha_n}$ le \textit{Leading Monomial}, de sorte que :
 \begin{center} $P = \underbrace{\underbrace{c}_\textrm{LC(P)}.\underbrace{X_1^{\alpha_1}\ldots X_n^{\alpha_n}}_\textrm{LM(P)}}_\textrm{LT(P)}$  + Q \end{center}
 où $Q\in \K[X_1, \ldots, X_n]$ est constitué des termes de la forme $X^\beta \text{ , } \beta \ord_{lex} \alpha \text{ et } X \in\K[X_1, \ldots, X_n]$.
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{definition}[Multi degré]
 Le vecteur d'exposant $\alpha := (\alpha_1,\ldots, \alpha_n)$ est appellé le multi degré de $P$ et est noté $mdeg(P)$.
-\end{definition}
-
+\end{definition}}
+\statetheoremhoriz{
 \begin{prop}
 Soient $P,Q \in\K[X_1, \ldots, X_n]$, on a $mdeg(P.Q) = mdeg(P) + mdeg(Q)$.
-\end{prop}
+\end{prop}}
 
 \pagebreak
 
@@ -335,24 +371,22 @@ Les polynômes symétriques prennent forme à partir de l'étude des racines de 
 Le polynôme $P$ peut alors se factoriser ainsi :
 $$X^3 + bX^2 + cX + d = (X - \alpha_1)(X - \alpha_2)(X - \alpha_3),$$
 ce qui nous donne :
-\begin{eqnarray}
-X^3 + bX^2 + cX + d &=& (X - \alpha_1)(X - \alpha_2)(X - \alpha_3) \nonumber \\
-X^3 + bX^2 + cX + d &=& X^3 - X^2(\alpha_3 + \alpha_2 + \alpha_1) + X(\alpha_2 \alpha_3 + \alpha_1 \alpha_3 + \alpha_1 \alpha_2) - \alpha_1 \alpha_2 \alpha_3 \nonumber
-\end{eqnarray}
-Par identification, on obtient 
-\begin{eqnarray}
-b &=& -(\alpha_3 + \alpha_2 + \alpha_1) \nonumber \\
-c &=& \alpha_2 \alpha_3 + \alpha_1 \alpha_3 + \alpha_1 \alpha_2 \nonumber \\
-d &=& - \alpha_1 \alpha_2 \alpha_3. \nonumber 
-\end{eqnarray}
+
+\begin{align*}
+    \left. \begin{array}{ll}
+    b & = -(\alpha_3 + \alpha_2 + \alpha_1) \\
+        c & = \alpha_2 \alpha_3 + \alpha_1 \alpha_3 + \alpha_1 \alpha_2 \\
+       d & = - \alpha_1 \alpha_2 \alpha_3
+    \end{array}\right\} (\star)
+\end{align*}
 On observe donc que les coefficients de $P$ sont polynomiaux en ses racines. Par ailleurs, comme modifier l'ordre des termes de $P$ ne le change pas, il s'ensuit que les polynômes définissant $b,c$ et $d$ par rapport à $\alpha_1$, $\alpha_2$ et $\alpha_3$ restent les mêmes si on permute $\alpha_1$, $\alpha_2$ et $\alpha_3$.\\
 Les polynômes respectant ce fait sont dits \textit{polynômes symétriques}. Cela nous amène à la définition générale suivante.\\
 
 %Peut-être réintroduire Sn l'ensemble des permutations à n éléments pour reprendre la definition de la première page de la ref 2
-
+\statetheoremhoriz{
 \begin{definition}
 Un polynôme $P \in K\left[ X_1, X_2, \ldots , X_n \right] $ est dit symétrique si $$P(X_{i_1}, X_{i_2}, \ldots , X_{i_n}) = P(X_1,X_2,\ldots ,X_n),$$ pour toute permutation $X_{i_1}, X_{i_2}, \ldots , X_{i_n}$ de $X_1,X_2, \ldots ,X_n$.
-\end{definition}
+\end{definition}}
 \vspace{12pt}
 \begin{examples}
 \begin{enumerate}
@@ -366,15 +400,33 @@ Où la fonction renvoie un booléen : \textsl{true} si le polynôme est symétri
 \end{examples}
 
 \subsection{Polynômes symétriques élémentaires}
+\statetheoremhoriz{
+\begin{definition}
+Soient $x_1, x_2, ..., x_n$ des variables dans un corps $K$. On définit les fonctions symétriques élémentaires $\sigma_1, ... , \sigma_n \in K[x_1, ..., x_n]$ comme suit,
+\begin{align*}
+\sigma_1 &= x_1 + ... + x_n \\
+& \vdots \\
+\sigma_r &=  \displaystyle \sum_{i_1 < i_2 < ... < i_r} x_{i_1} x_{i_2} \cdots x_{i_r}, \\
+& \vdots \\
+\sigma_n &= x_1 x_2 \cdots x_n
+\end{align*}
+\end{definition}}
 
-Voir CLO page 318, def 2
-
+Par conséquent, $\sigma_r$ est la somme de tous les monômes qui sont produits de $r$ variable distinctes. Pour vérifier que les $\sigma_i$, $ i \in \{1, \cdots , n \}$ sont bien symétriques nous allons généraliser le résultat noté $(\star)$ plus haut. On introduit le polynôme,
+\begin{center}
+$f(X)=(X - x_1)(X-x_2) \cdots (X-x_n) \hspace{0,5cm}, \hspace{0,5cm} (\star \star)$
+\end{center}
+Ses racines sont donc $x_1, \cdots x_n$. En explicitant le développement de $f(X)$ dont nous vous épargnons les calculs nous obtenons la forme simplifiée suivante
+\begin{center}
+$f(X) = X^n - \sigma_1 X^{n-1} + \sigma_2 X^{n-2} + \cdots + (-1)^{n-1} \sigma_{n-1} X + (-1)^{n} \sigma_n$
+\end{center}
+Supposons maintenant que nous réorganisons les $x_i, i \in \{ 1 , \cdots , n \}$. Cela change l'ordre des facteurs de $(\star \star)$ mais la fonction en elle-même reste identique. Donc les coefficients de $(-1)^r \sigma_r$ de la fonction $f$ sont des fonctions symétriques.
 \subsection{Le théorème fondamental des polynômes symétriques}
 En considérant tous les rappels faits à précédemment, nous pouvons introduire le fameux théorème fondamental des polynômes symétriques.
-
+\statetheoremhoriz{
 \begin{theorem}
 Tout polynôme symétrique de $K\left[ X_1, X_2, ... , X_n \right]$ peut s'écrire de façon unique comme une expression polynomiale en les polynômes symétriques élémentaires $\sigma_1, \sigma_2,..., \sigma_n$.
-\end{theorem}
+\end{theorem}}
 
 
 
@@ -387,14 +439,14 @@ Posons maintenant,
 \begin{center}
 $h=\sigma_1^{\alpha_1 - \alpha_2} \sigma_2^{\alpha_2 - \alpha_3} \ldots \sigma_{n-1}^{\alpha_{n-1}-\alpha_n} \sigma_n^{\alpha_n}$
 \end{center}
-Pour trouver le \textit{Leading Term} de $h$, on a besoin de $LT(\sigma_r)=x_1x_2 \cdots x_r$ avec $r \in \lbrace 1, \ldots , r \rbrace$. On en déduit alors que, 
+Pour trouver le \textsc{Leading Term} de $h$, on a besoin de $LT(\sigma_r)=x_1x_2 \cdots x_r$ avec $r \in \lbrace 1, \ldots , r \rbrace$. On en déduit alors que, 
 \begin{eqnarray}
 LT(h) &=& LT( \sigma_1^{\alpha_1 - \alpha_2} \sigma_2^{\alpha_2 - \alpha_3} \ldots \sigma_{n-1}^{\alpha_{n-1}-\alpha_n} \sigma_n^{\alpha_n}) \nonumber \\
 &=& LT(\sigma_1)^{\alpha_1 - \alpha_2}LT(\sigma_2)^{\alpha_2 - \alpha_3} \ldots LT(\sigma_n)^{\alpha_n} \nonumber \\
 &=& x_1^{\alpha_1 - \alpha_2}(x_1x_2)^{\alpha_2 - \alpha_3} \ldots (x_1x_2 \ldots x_n)^{\alpha_n} \nonumber \\ 
 &=& x_1^{\alpha_1}x_2^{\alpha_2} \ldots x_n^{\alpha_n} = x^\alpha . \nonumber
 \end{eqnarray}
-Il s'ensuit donc que $f$ et $ah$ ont le même \textit{Leading Term}, et par conséquent,
+Il s'ensuit donc que $f$ et $ah$ ont le même \textsc{Leading Term}, et par conséquent,
 \begin{center}
 mdeg($f-ah$) $<$ mdeg($f$), lorsque $f-ah \neq 0$.
 \end{center}
