@@ -108,7 +108,7 @@
     \vspace{12pt}
 2020-2021}\\[1.0 cm]
     \dotline[15pt]{15cm}\\
-	%\includegraphics[scale = 2.2]{logo.png}
+	\includegraphics[scale = 2.2]{logo.png}
 	\dotline[15pt]{15cm}\\
 	\vspace{1.5cm}
 	\textsc{\Large Faculté des Sciences et Techniques}\\
@@ -272,7 +272,7 @@ En d'autres terme, $\ord$ est une relation d'équivalence sur $E$.
 \begin{definition}[Ordre total, ordonné]
 Sous les mêmes notations, on dit que $\ord$ est un \textit{ordre total} si deux éléments quelconques sont toujours comparable, i.e. si
 	\begin{center}$\forall (x,y)\in E^2, x\ord y\text{ ou } y\ord x$\end{center}
-De plus, $\ord$ est dit \textit{bien ordoné} si
+De plus, $\ord$ est dit \textit{bien ordonné} si
 	\begin{center}$  \forall\text{ } F \subseteq E, \exists \text{ } f_{min}\in F \text{ tel que } \forall f\in F, \text{ } f_{min}\ord f $\end{center}
 \end{definition}
 
@@ -357,13 +357,14 @@ Un polynôme $P \in K\left[ X_1, X_2, \ldots , X_n \right] $ est dit symétrique
 \vspace{12pt}
 \begin{examples}
 \begin{enumerate}
-	\item Soit $P = X^{n_1} + Y^{n_2} + Z^{n_3}\in K\left[ X,Y,Z\right]$, avec $n_1,n_2,n_3 \in \mathbbm{N}$. Alors $P$ est un polynôme symétrique. En effet, 
-		\begin{eqnarray}
-P &=& X^{n_1} + Z^{n_3} + Y^{n_2} \nonumber \\
-P &=& Y^{n_2} + X^{n_1} + Z^{n_3} \nonumber \\
-P &=& Y^{n_2} + Z^{n_3} + X^{n_1} \nonumber \\
-P &=& ... \nonumber
-		\end{eqnarray}
+	\item Soit $P = X^{n} + Y^{n} + Z^{n}\in K\left[ X,Y,Z\right]$, avec $n \in \mathbbm{N}$. Alors $P$ est un polynôme symétrique. Comme le prouve la fonction \textsl{symmfunc} de Maple :
+	%En effet, 
+	%	\begin{eqnarray}
+%P &=& X^{n_1} + Z^{n_3} + Y^{n_2} \nonumber \\
+%P &=& Y^{n_2} + X^{n_1} + Z^{n_3} \nonumber \\
+%P &=& Y^{n_2} + Z^{n_3} + X^{n_1} \nonumber \\
+%P &=& ... \nonumber
+%		\end{eqnarray}
 		
 	\item Soit $P = XYZ \in K\left[ X,Y,Z\right]$. Ce polynôme est symétrique car $P = XYZ = YZX = ZYX = \ldots$.
 \end{enumerate}
