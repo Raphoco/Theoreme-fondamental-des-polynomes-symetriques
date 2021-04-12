@@ -257,7 +257,6 @@ Puisque $n$ est positif alors $\mathcal{P} (n,p) > 0$.
 
 %Parler de LT, LM, ..., multideg ? ordre lexicographique
 
-Dans ce qui suit, $\K$ désignera un corps quelconque.
 
 \begin{definition}[Ordre]
 Soit $E$ un ensemble quelconque, on appelle \textit{ordre partiel} sur $E$ toute relation vérifiant les propriétés suivantes pour $(x,y) \in E^2$:
@@ -313,8 +312,8 @@ Nous allons dès à présent travailler dans $\K[X_1, \ldots, X_n]$, et $\ord$ d
 
 \begin{definition}[Leading Term]
 On appelle \textit{terme} tout éléments de $\M_n$ multiplié par un élément non nul $c$ du corps de base. \newline
-On appelle \textit{Leading Term}(LT) de $P\in \K[X_1, \ldots, X_n]$, son monôme de plus haut dégre par rapport à l'ordre $\ord$. \newline
-La constante $c$ sera appellée \textit{Leading Coefficient}(LC), et $X_1^{\alpha_1}\ldots X_n^{\alpha_n}$ le \textit{Leading Monomial}, de sorte que :
+On appelle \textit{Leading Term}(LT) de $P\in \K[X_1, \ldots, X_n]$, son monôme de plus haut degré par rapport à l'ordre $\ord$. \newline
+La constante $c$ sera appelée \textit{Leading Coefficient}(LC), et $X_1^{\alpha_1}\ldots X_n^{\alpha_n}$ le \textit{Leading Monomial}, de sorte que :
 \begin{center} $P = \underbrace{\underbrace{c}_\textrm{LC(P)}.\underbrace{X_1^{\alpha_1}\ldots X_n^{\alpha_n}}_\textrm{LM(P)}}_\textrm{LT(P)}$  + Q \end{center}
 où $Q\in \K[X_1, \ldots, X_n]$ est constitué des termes de la forme $X^\beta \text{ , } \beta \ord_{lex} \alpha \text{ et } X \in\K[X_1, \ldots, X_n]$.
 \end{definition}
@@ -357,19 +356,18 @@ Un polynôme $P \in K\left[ X_1, X_2, \ldots , X_n \right] $ est dit symétrique
 \vspace{12pt}
 \begin{examples}
 \begin{enumerate}
-	\item Soit $P = X^{n} + Y^{n} + Z^{n}\in K\left[ X,Y,Z\right]$, avec $n \in \mathbbm{N}$. Alors $P$ est un polynôme symétrique. Comme le prouve la fonction \textsl{symmfunc} de Maple :
-	%En effet, 
-	%	\begin{eqnarray}
-%P &=& X^{n_1} + Z^{n_3} + Y^{n_2} \nonumber \\
-%P &=& Y^{n_2} + X^{n_1} + Z^{n_3} \nonumber \\
-%P &=& Y^{n_2} + Z^{n_3} + X^{n_1} \nonumber \\
-%P &=& ... \nonumber
-%		\end{eqnarray}
-		
+	\item Soit $P = X^{n} + Y^{n} + Z^{n}\in K\left[ X,Y,Z\right]$, avec $n \in \mathbbm{N}$. Alors $P$ est un polynôme symétrique. Comme le prouve la fonction \textsl{symmfunc} de Maple :\\ 
+	
+	\includegraphics[scale=0.8]{1.png}
+Où la fonction renvoie un booléen : \textsl{true} si le polynôme est symétrique, \textsl{false} si non.
 	\item Soit $P = XYZ \in K\left[ X,Y,Z\right]$. Ce polynôme est symétrique car $P = XYZ = YZX = ZYX = \ldots$.
 \end{enumerate}
 
 \end{examples}
+
+\subsection{Polynômes symétriques élémentaires}
+
+Voir CLO page 318, def 2
 
 \subsection{Le théorème fondamental des polynômes symétriques}
 En considérant tous les rappels faits à précédemment, nous pouvons introduire le fameux théorème fondamental des polynômes symétriques.
@@ -389,20 +387,20 @@ Posons maintenant,
 \begin{center}
 $h=\sigma_1^{\alpha_1 - \alpha_2} \sigma_2^{\alpha_2 - \alpha_3} \ldots \sigma_{n-1}^{\alpha_{n-1}-\alpha_n} \sigma_n^{\alpha_n}$
 \end{center}
-Pour trouver le \textsc{Leading Term} de $h$, on a besoin de $LT(\sigma_r)=x_1x_2 \cdots x_r$ avec $r \in \lbrace 1, \ldots , r \rbrace$. On en déduit alors que, 
+Pour trouver le \textit{Leading Term} de $h$, on a besoin de $LT(\sigma_r)=x_1x_2 \cdots x_r$ avec $r \in \lbrace 1, \ldots , r \rbrace$. On en déduit alors que, 
 \begin{eqnarray}
 LT(h) &=& LT( \sigma_1^{\alpha_1 - \alpha_2} \sigma_2^{\alpha_2 - \alpha_3} \ldots \sigma_{n-1}^{\alpha_{n-1}-\alpha_n} \sigma_n^{\alpha_n}) \nonumber \\
 &=& LT(\sigma_1)^{\alpha_1 - \alpha_2}LT(\sigma_2)^{\alpha_2 - \alpha_3} \ldots LT(\sigma_n)^{\alpha_n} \nonumber \\
 &=& x_1^{\alpha_1 - \alpha_2}(x_1x_2)^{\alpha_2 - \alpha_3} \ldots (x_1x_2 \ldots x_n)^{\alpha_n} \nonumber \\ 
 &=& x_1^{\alpha_1}x_2^{\alpha_2} \ldots x_n^{\alpha_n} = x^\alpha . \nonumber
 \end{eqnarray}
-Il s'ensuit donc que $f$ et $ah$ ont le même \textsc{Leading Term}, et par conséquent,
+Il s'ensuit donc que $f$ et $ah$ ont le même \textit{Leading Term}, et par conséquent,
 \begin{center}
-multideg($f-ah$) $<$ multideg($f$), lorsque $f-ah \neq 0$.
+mdeg($f-ah$) $<$ mdeg($f$), lorsque $f-ah \neq 0$.
 \end{center}
 \vspace{12pt}Posons maintenant $f_1 = f - ah$. On remarque que $f_1$ est symétrique puisque $f$ et $ah$ le sont. Donc, si $f_1 \neq 0$, on peut répéter l'étape précédente pour construire $f_2 = f_1 - a_1h_1$, où $a_1$ est une constante et $h_1 = \displaystyle \prod_{i=1}^{n} \sigma_i^{\gamma_i}$, $\gamma_i \in \mathbbm{N}$. On sait aussi que $LT(f_2)<LT(f_1)$ lorsque $f_2 \neq 0$. En continuant ainsi on obtient une suite de polynômes $f, f_1, f_2, \ldots$ avec
 \begin{center}
-multideg($f$ )$>$ multideg($f_1$) $>$ multideg($f_2$) $\ldots$ .
+mdeg($f$ )$>$ mdeg($f_1$) $>$ mdeg($f_2$) $\ldots$ .
 \end{center}
 Comme l'ordre lexicographique est bien ordonné, la suite est finie. Mais le processus se termine seulement lorsque $f_{t+1}=0$ pour un certain $t \in \mathbbm{N}$. On voit alors assez naturellement que 
 $$f = ah + a_1h_1 + \ldots + a_th_t\,$$
