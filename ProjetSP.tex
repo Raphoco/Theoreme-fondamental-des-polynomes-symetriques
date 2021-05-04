@@ -170,128 +170,8 @@
 \tableofcontents
 \pagebreak
 
-\section{Rappels sur les Corps Finis} 
-Soit $\K$ un corps quelconque et soit $\varphi$ le morphisme suivant :
-\begin{center}
-$
-\begin{array}{l|rcl}
-\varphi : & \Z & \longrightarrow & \K \\
-    & n & \longmapsto & n\cdot 1_{\K}
-\end{array}
-$
-\end{center}
-\vspace{12pt}
-\statetheoremhoriz{
-\begin{definition}
-Soit $\K$ un corps quelconque. Toute partie $\mathcal{P}$ de $\K$ vérifiant :
-\begin{itemize}
-\item $\mathcal{P}$ est non vide et est une partie stable pour $+$ et $\times$ de $\K$ et $\mathcal{P}$ muni des lois induites par celles de $\K$ est lui-même un corps.
-\item $\mathcal{P}$ est un sous-anneau de $\K$, $1 \in \mathcal{P}$ et $(p \in \mathcal{P}^{*} = \mathcal{P} - \{0 \} \Rightarrow p^{-1} \in \mathcal{P}^{*})$.
-\item $\mathcal{P}$ est un sous-groupe de $(\K, +)$ et $\mathcal{P}^{*}$ muni de la loi $\times$ est un sous-groupe multiplicatif $(\K^{*}, \times)$.
-\end{itemize}
-est appelée sous-corps de $\K$.
-\end{definition}}
-\vspace{12pt}
-\statetheoremhoriz{
-\begin{definition}
-Soit $\K$ un corps quelconque.
-\begin{itemize}
-\item $\K$ est dit premier s'il ne contient aucun sous-corps strict.
-\item Si $\K$ est un corps, le sous-corps de $\K$ engendré par $1_{\mathbbm{K}}$ est un corps premier, c'est le sous-corps premier de $\K$.
-\end{itemize}
-\end{definition}}
+\section{Polynômes multivariés}
 
-Le noyau du morphisme $\varphi$ est un idéal de $\Z$ et donc de la forme $k\Z$ pour $k \in \Z$. Par le premier théorème d'isomorphisme on a Im$(\varphi) \cong \Z / n \Z$. Par intégrité de $\Z / n \Z$, $n=0$ ou $n$ est un nombre premier. Si $n=0$ alors $\varphi$ est injective et donc le sous-corps premier de $\K$ est isomorphe à $\Q$. Si $n \neq 0$ alors le sous-corps premier est isomorphe à $\Z / n \Z$ et $n$ s'appelle la \textbf{caractéristique} de $\K$. 
-%On désignera dorénavant par $\K$ un corps fini de caractéristique $p$ avec $p$ un nombre premier.
-\\
-\statetheoremhoriz{
-\begin{definition}
-Soient $L$ et $\K$ deux corps. Si $L/K$ est une extension de corps alors $L$ est un espace vectoriel sur $K$, où l'addition vectorielle est l'addition dans $L$ et la multiplication par un scalaire $K \times L$ est la restriction à $K \times L$ de la multiplication dans $L$. La dimension du $K$-espace vectoriel $L$ est appelée le degré de l'extension et est notée $[L:K]$.
-\end{definition}}
-\vspace{12pt}
-\statetheoremhoriz{
-\begin{definition}
-Soit $P$ un polynôme sur un corps $K$. On appelle corps de décomposition de $P$ sur $K$ une extension $L$ de $K$ telle que :
-\begin{itemize}
-\item dans $L[X]$, $P(X)$ est produit de facteurs de degré $1$,
-\item les racines de $P(X)$ engendrent $L$.
-\end{itemize}
-\end{definition}}
-\vspace{12pt}
-\statetheoremhoriz{
-\begin{prop}
-Soit $P$ un polynôme sur un corps $K$. Alors $P$ admet un corps de décomposition, unique à $K$-isomorphisme près.
-\end{prop}}
-\vspace{30pt}
-\statetheoremhoriz{
-\begin{prop}\hspace{12pt}
-\begin{itemize}
-\item Le cardinal de $\K$ est une puissance de $p$.
-\item Réciproquement, pour tout $n \in \N^{*}$, il existe un corps $\K$ de cardinal $p^n$. En outre $\K$ est unique à isomorphisme près.
-%On appelle corps de décomposition de P, la plus petite extension de K contenant toutes les racines de P (item 1)
-\end{itemize}
-\end{prop}}
-%\vspace{12pt}
-\begin{proof}\hspace{12pt}
-\begin{itemize}
-\item Puisque le sous-corps premier de $\K$ est isomorphe à $\Z / p \Z$, alors $\K$ est naturellement muni d'une structure de $\Z / p \Z$-espace vectoriel. On note $n = [ \K : \Z / p \Z ]$. Alors $\# \K = \# (\Z / p \Z)^n = p^n$.
-\item Soit $n \in \N^{*}$. Si $\K$ est un corps fini de cardinal $p^n$, alors $\K$ est le corps de décomposition de $X^{p^n} - X$ sur $\Z / p \Z$ : en effet, puisque pour tout $x \in \K$, $x$ est racine de $X^{p^n} - X$ alors $X^{p^n} - X$ possède ses $p^n$ racines dans $\K$.\\
-Réciproquement, soit $K$ le corps de décomposition de $X^{p^n}$ sur $\Z / p \Z$. Soit $\mathcal{K}$ l'ensemble des éléments de $K$ qui sont racines de $X^{p^n} - X$. On vérifie que $\mathcal{K}$ est un sous-corps de $K$. Puisque $1_K \in \mathcal{K}$, et si $x,y \in \mathcal{K}$ alors $x^{p^n}= x$ et $y^{p^n} = y$, donc $(x+y)^{p^n} x + y$ et $(xy^{-1})^{p^n} = xy^{-1}$, si bien que $x + y, xy^{-1} \in \mathcal{K}$. Par ailleurs la dérivée formelle, $(X^{p^n} - X)' = -1$ est premier avec $X^{p^n} - X$ donc les racines de $X^{p^n} - X$ sont simples. On en déduit alors que $\# \mathcal{K} = p^n$. Finalement $K = \mathcal{K}$ est un corps à $p^n$ éléments et il est unique à isomorphisme près en vertu de l'unicité du corps de décomposition de $X^{p^n} - X$ sur $\Z / p \Z$.
-\end{itemize}
-\end{proof}
-On notera dorénavant $\F_q$ \textbf{le} corps fini à $q = p^n$ éléments.
-\subsection{Construction}
-Soit $P \in \F_p [X]$ un polynôme irréductible sur $\F_p$. On note $n = $ deg$(P)$. Puisque $P$ est irréductible, l'idéal $(P)$ est donc maximal%est-ce qu'on le montre ?
-. Le quotient $\F_p [X] / (P)$ est le corps de rupture de $P$ sur $\F_p$ de cardinal $p^n$. Afin de montrer que l'on peut toujours construire les corps finis nous allons montrer que pour tout $n \in \N^{*}$ il existe un polynôme irréductible sur $\F_p$ de degré $n$.
-\statetheoremhoriz{
-\begin{prop}
-Soit $n \in \N^{*}$, on définit $\mathcal{P} (n,p)$ par
-\begin{center}
-$\mathcal{P} (n,p) = \{ P \in \F_p [X]$, $P$ unitaire, irréductible de degré $n \}$.
-\end{center}
-Alors pour tout $n \in \N^{*}$ on a,
-\begin{center}
-$\displaystyle X^{p^n} - X = \prod_{d | n} \prod_{P \in \mathcal{P}(n,p)} P.$
-\end{center}
-\end{prop}}
-\begin{proof}
-\begin{itemize}
-\item Soit $P$ un facteur irréductible de $X^{p^n} - X$ sur $\F_p$ de degré $d$. Le corps de rupture de $P$ sur $\F_p$ est de cardinal $p^d$ du corps de décomposition $X^{p^n} - X$ sur $\F_p$, c'est-à-dire $F_{p^n}$, donc $d$ divise $n$.
-\item Réciproquement, on suppose que $d$ divise $n$ et soit $P \in \mathcal{P} (n,p)$. Soit $\alpha$ une racine de $P$ dans le corps de rupture de $P$ sur $\F_p$. Alors on a $\F_p (\alpha) \simeq \F_{p^d}$. D'où $\alpha$ est racine de $X^{p^n} - X$. Or, puisque $P$ est irréductible, alors $P$ est le polynôme minimal de $\alpha$ sur $\F_p$ donc $P$ divise $X^{p^n} - X$. En outre les facteurs irréductible de $X^{p^n} - X$ sur $\F_p$ sont simples puisque $P$ est le polynôme minimal de $\alpha$ et que $P$ divise $X^{p^n} - X$.
-\end{itemize}
-\end{proof}
-\statetheoremhoriz{
-\begin{coro}
-Soit $n \in \N^{*}$, il existe un polynôme irréductible de degré $n$ sur $\F_p$.
-\end{coro}
-}
-\begin{proof}
-En conservant les notations de la proposition précédente, il s'agit de montrer que $\# \mathcal{P} (n,p) > 0$. Pour ce faire on évalue le degré de l'égalité
-\begin{center}
-$\displaystyle X^{p^n} - X = \prod_{d | n} \prod_{P \in \mathcal{P}(n,p)} P.$
-\end{center}
-on a alors
-\begin{center}
-$\displaystyle p^n = \sum_{d | n} d \cdot \# \mathcal{P} (n,p)$
-\end{center}
-On en déduit alors que pour tout $d \in \N^{*}$ on a $p^d \geq d \cdot \# \mathcal{P} (n,p)$, puis,
-\begin{align*}
-\displaystyle
-n \cdot \# \mathcal{P} (n,p) &= p^n - \sum_{d | n , d \neq n} d \cdot \# \mathcal{P} (n,p)\\
-&\geq p^n - \sum_{d | n , d \neq n} p^d\\
-&\geq p^n - \sum_{d =1}^{n-1} p^d\\
-&\geq p^n - p \frac{p^{n-1} - 1}{p-1} > 0
-\end{align*}
-Puisque $n$ est positif alors $\mathcal{P} (n,p) > 0$.
-\end{proof}
-
-
-
-
-\subsection{Polynômes multivariés}
-
-
-%Parler de LT, LM, ..., multideg ? ordre lexicographique
 
 \statetheoremhoriz{
 \begin{definition}[Ordre]
@@ -320,9 +200,9 @@ Soient $n\in\N$ et $\{X_1, ..., X_n\}$ un ensemble fini d'indéterminées. On d�
 	\begin{center} $\M_n := \{ X^{\alpha} := X_1^{\alpha_1}\ldots X_n^{\alpha_n}\}$ \end{center}
 \end{definition}}
 \statetheoremhoriz{
-\begin{prop}
+\begin{prop} Soit,
 \fonction{\phi}{\M_n}{\N^n}{ X^{\alpha} := X_1^{\alpha_1}\ldots X_n^{\alpha_n}}{\alpha:=(\alpha_1,\ldots, \alpha_n)}
-est un isomorphisme de monoïde.
+alors $\phi$ un isomorphisme de monoïde.
 \end{prop}}
 \statetheoremhoriz{
 \begin{definition}[Ordre monomial]
@@ -362,8 +242,36 @@ Le vecteur d'exposant $\alpha := (\alpha_1,\ldots, \alpha_n)$ est appellé le mu
 Soient $P,Q \in\K[X_1, \ldots, X_n]$, on a $mdeg(P.Q) = mdeg(P) + mdeg(Q)$.
 \end{prop}}
 
-\pagebreak
+\statetheoremhoriz{
+\begin{definition}
+On appelle idéal de tête (\textsc{Leading Ideal}) d'un idéal $\mathcal{I} \subset K[X]$ non nul, l'idéal engendré par les LT$(f)$ où $f \in I - \{0\}$,
+\begin{align*}
+\text{LID}(f) &= \langle \Big\lbrace \textsc{LT}(f) : f \in I - \{ 0 \} \Big\rbrace \rangle\\
+&= \langle \Big\lbrace \textsc{LM}(f) : f \in I - \{ 0 \} \Big\rbrace \rangle
+\end{align*}
+\end{definition}}
 
+\statetheoremhoriz{
+\begin{definition}
+Soit $I\subseteq \mathbbm{K}[X_1,...,X_n]$ un idéal.\newline
+Soit $\preccurlyeq$ un ordre monomial sur $\mathbbm{K}[X_1,...,X_n]$.\newline
+$I$ étant de type fini, on peut poser $I=<g_1,\ldots, g_t>$ où les $g_t$ sont tous non nuls.\newline
+Soit $G:=(g_1,..., g_t)$.\newline
+On dit que $G$ forme une base de \textit{Gröbner} de l'idéal $I$ si
+\begin{center}
+$\langle \textsc{lt}(g_1),\ldots, \textsc{lt}
+(g_t) \rangle = \textsc{lid}(I)$
+\end{center}
+\end{definition}}
+
+
+\statetheoremhoriz{
+\begin{prop} \vphantom\\
+\begin{enumerate}[label=(\roman*)]
+\item Pour un ordre monomial $\preccurlyeq$ donné et $I\subseteq \mathbbm{K}[X_1,...,X_n]$ un idéal, il existe toujours une base de \textit{Gröbner}.
+\item Toute base de \textit{Gröbner} de $I$ est une base de $I$.
+\end{enumerate}
+\end{prop}}
 \section{Les polynômes symétriques}
 
 \subsection{Introduction aux polynômes symétriques}
@@ -489,11 +397,15 @@ $
 Donc $\iota$ est une application injective. Par conséquent, les $g_\beta$ ont des \textsc{Leading Term} distincts. En particulier, en choisissant $\beta$ tel que $LT(g_\beta)>LT(g_\gamma)$, quelques soient $\gamma \neq \beta$, alors $LT(g_\beta)$ sera plus grand que tous les termes des $g_\gamma$. Finalement il n'y a rien pour annuler $LT(g_\beta)$, et par conséquent, $g(\sigma_1 , \ldots , \sigma_n)$ ne peut être nul, l'unicité en découle.
 \end{proof}
 
-
+\statetheoremhoriz{
 \begin{corollaire}
+On note $\sigma_i$, $i \in \N$, les polynômes symétriques élémentaires. Soit l'anneau $\K[x_1, \ldots, x_n, y_1, \ldots, y_n]$. On fixe un ordre monômial où chaque monôme impliquant des $x_i$, $i \in \{1, \ldots, n \}$ est plus grand que tous les monômes de $\K [y_1, \ldots, y_n]$. Soit $G$ une base de \textit{Gröbner} de l'idéal $ \langle \sigma_1 - y_1 , \ldots , \sigma_n - y_n \rangle \subset \K[x_1 , \ldots , x_n, y_1, \ldots, y_n ]$ et  $f \in \K [x_1, \ldots, x_n ]$. On pose $g = \overline{f}^G$, le reste de la division multivariée de $f$ sur $G$. Alors :
+\begin{enumerate}[label=(\roman*)]
+\item $f$ est symétrique si et seulement si $g \in \K[y_1, \ldots, y_n]$.
 
-\end{corollaire}
-
+\item Si $f$ est symétrique alors $f = g(\sigma_1, \ldots, \sigma_n)$ est l'unique expression de $f$ en les polynômes symétriques élémentaires.
+\end{enumerate}
+\end{corollaire}}
 
 
 
